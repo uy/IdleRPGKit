@@ -9,34 +9,38 @@ import Foundation
 
 public class IdleRpgLoader {
     public static func loadExampleGameData() -> IdleRPGBaseModel? {
-        return loadGameData(
-            from: "example_idle_rpg",
-            isExample: true
-        )
+        guard
+            let url = Bundle.module.url(
+                forResource: "example_idle_rpg",
+                withExtension: "json"
+            )
+        else {
+            return nil
+        }
+        
+        return load(file: url)
     }
     
     public static func loadGameData(
-        from filename: String,
-        isExample: Bool = false
+        from filename: String
     ) -> IdleRPGBaseModel? {
         guard
-            let url = isExample
-                ? Bundle.module.url(
-                    forResource: filename,
-                    withExtension: "json"
-                )
-                : Bundle.main.url(
-                    forResource: filename,
-                    withExtension: "json"
-                )
+            let url = Bundle.main.url(
+                forResource: filename,
+                withExtension: "json"
+            )
         else {
             print("Couldn't find file: \(filename).json")
             return nil
         }
-
+        
+        return load(file: url)
+    }
+    
+    static func load(file from: URL) -> IdleRPGBaseModel? {
         do {
             let data = try Data(
-                contentsOf: url
+                contentsOf: from
             )
             let decoder = JSONDecoder()
             let gameData = try decoder.decode(
