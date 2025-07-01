@@ -12,6 +12,8 @@ public class IdleRpgManager: ObservableObject {
     
     @Published public var gameProgress: IdleRPGGameProgressModel
     
+    private var levelingSystem: IdleRpgLevelingSystem!
+    
     public init(
         baseModel: IdleRPGBaseModel,
         race: IdleRPGRaceModel,
@@ -26,11 +28,28 @@ public class IdleRpgManager: ObservableObject {
                 character: .init(
                     race: race,
                     clas: clas,
-                    level: 1
+                    level: 1,
+                    currentExperience: 0
                 )
             )
             
             IdleRpgUserDefaults.setGameProgress(gameProgress)
         }
+        
+        levelingSystem = .init(
+            leveling: baseModel.leveling
+        )
+    }
+    
+    public func currentXp() -> Int {
+        return gameProgress.character.currentExperience
+    }
+    
+    public func xpToNextLevel() -> Int {
+        return levelingSystem.xpToNextLevel(gameProgress.character.level)
+    }
+    
+    public func gainXp(_ amount: Int) {
+        gameProgress.character.currentExperience += amount
     }
 }
