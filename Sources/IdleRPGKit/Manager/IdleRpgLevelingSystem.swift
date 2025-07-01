@@ -16,7 +16,14 @@ struct IdleRpgLevelingSystem {
         self.formulaParameters = model.formulaParameters
     }
     
-    func xpToNextLevel(_ level: Int) -> Int {
-        return formulaParameters.baseExperience * Int((pow(Double(level), formulaParameters.baseOfMultiplier)))
+    private var xpCache: [Int: Int] = [:]
+    mutating func xpToNextLevel(_ level: Int) -> Int {
+        if let cached = xpCache[level] {
+            return cached
+        }
+
+        let result = Int(Double(formulaParameters.baseExperience) * pow(Double(formulaParameters.baseOfMultiplier), Double(level)))
+        xpCache[level] = result
+        return result
     }
 }

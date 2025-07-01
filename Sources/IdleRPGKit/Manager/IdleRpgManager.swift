@@ -5,12 +5,16 @@
 //  Created by Utku Yeğen on 25.06.2025.
 //
 
+import Foundation
 import Combine
 
 public class IdleRpgManager: ObservableObject {
     private var baseModel: IdleRPGBaseModel
     
+    private var cancellables = Set<AnyCancellable>()
     @Published public var gameProgress: IdleRPGGameProgressModel
+    @Published public var level: Int = 1
+    @Published public var currentXP: Int = 0
     
     private var levelingSystem: IdleRpgLevelingSystem!
     
@@ -35,10 +39,21 @@ public class IdleRpgManager: ObservableObject {
             
             IdleRpgUserDefaults.setGameProgress(gameProgress)
         }
+        level = gameProgress.character.level
+        currentXP = gameProgress.character.currentExperience
         
         levelingSystem = .init(
             leveling: baseModel.leveling
         )
+        
+        gameProgress.character.$level
+            .receive(on: RunLoop.main)
+            .assign(to: \.level, on: self)
+            .store(in: &cancellables)
+        gameProgress.character.$currentExperience
+            .receive(on: RunLoop.main)
+            .assign(to: \.currentXP, on: self)
+            .store(in: &cancellables)
     }
     
     public func currentXp() -> Int {
@@ -50,6 +65,14 @@ public class IdleRpgManager: ObservableObject {
     }
     
     public func gainXp(_ amount: Int) {
-        gameProgress.character.currentExperience += amount
+        let newExperience = gameProgress.character.currentExperience + amount
+        let xpToNextLevel = xpToNextLevel()
+        
+        if newExperience >= xpToNextLevel {
+            gameProgress.character.level += 1
+            gameProgress.character.currentExperience = newExperience - xpToNextLevel
+        } else {
+            gameProgress.character.currentExperience += amount
+        }
     }
 }
