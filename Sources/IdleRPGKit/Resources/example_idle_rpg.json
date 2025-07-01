@@ -1,112 +1,112 @@
 {
-  "character": {
-    "races": [
-      {
-        "key": "human",
-        "experienceBonus": 0.1,
-        "attributeBonus": []
-      },
-      {
-        "key": "elves",
-        "experienceBonus": 0,
-        "attributeBonus": [
-          {
-            "key": "dexterity",
-            "bonusPerLevelMultiplier": 0.2
-          },
-          {
-            "key": "intelligence",
-            "bonusPerLevelMultiplier": 0.15
-          }
-        ]
-      },
-      {
-        "key": "dwarves",
-        "experienceBonus": -0.1,
-        "attributeBonus": [
-          {
-            "key": "strength",
-            "bonusPerLevelMultiplier": 0.5
-          }
-        ]
-      }
-    ],
-    "clases": [
-      {
-        "key": "warrior",
-        "startingBonusAttributes": [
+    "character": {
+        "races": [
+            {
+                "key": "human",
+                "experienceBonus": 0.1,
+                "attributeBonus": []
+            },
+            {
+                "key": "elves",
+                "experienceBonus": 0,
+                "attributeBonus": [
+                    {
+                        "key": "dexterity",
+                        "bonusPerLevelMultiplier": 0.2
+                    },
+                    {
+                        "key": "intelligence",
+                        "bonusPerLevelMultiplier": 0.15
+                    }
+                ]
+            },
+            {
+                "key": "dwarves",
+                "experienceBonus": -0.1,
+                "attributeBonus": [
+                    {
+                        "key": "strength",
+                        "bonusPerLevelMultiplier": 0.5
+                    }
+                ]
+            }
+        ],
+        "clases": [
+            {
+                "key": "warrior",
+                "startingBonusAttributes": [
+                    {
+                        "key": "strength",
+                        "bonus": 2
+                    },
+                    {
+                        "key": "constitution",
+                        "bonus": 1
+                    }
+                ]
+            },
+            {
+                "key": "mage",
+                "startingBonusAttributes": [
+                    {
+                        "key": "intelligence",
+                        "bonus": 2
+                    },
+                    {
+                        "key": "wisdom",
+                        "bonus": 1
+                    }
+                ]
+            },
+            {
+                "key": "rogue",
+                "startingBonusAttributes": [
+                    {
+                        "key": "dexterity",
+                        "bonus": 2
+                    },
+                    {
+                        "key": "agility",
+                        "bonus": 1
+                    }
+                ]
+            }
+        ],
+        "attributes": [
             {
                 "key": "strength",
-                "bonus": 2
+                "baseScore": 8
             },
-            {
-                "key": "constitution",
-                "bonus": 1
-            }
-        ]
-      },
-      {
-        "key": "mage",
-        "startingBonusAttributes": [
-            {
-                "key": "intelligence",
-                "bonus": 2
-            },
-            {
-                "key": "wisdom",
-                "bonus": 1
-            }
-        ]
-      },
-      {
-        "key": "rogue",
-        "startingBonusAttributes": [
             {
                 "key": "dexterity",
-                "bonus": 2
+                "baseScore": 8
             },
             {
                 "key": "agility",
-                "bonus": 1
+                "baseScore": 8,
+            },
+            {
+                "key": "constitution",
+                "baseScore": 8
+            },
+            {
+                "key": "intelligence",
+                "baseScore": 8
+            },
+            {
+                "key": "wisdom",
+                "baseScore": 8
+            },
+            {
+                "key": "charisma",
+                "baseScore": 8
             }
         ]
-      }
-    ],
-    "attributes": [
-      {
-        "key": "strength",
-        "baseScore": 8
-      },
-      {
-        "key": "dexterity",
-        "baseScore": 8
-      },
-      {
-        "key": "agility",
-        "baseScore": 8,
-      },
-      {
-        "key": "constitution",
-        "baseScore": 8
-      },
-      {
-        "key": "intelligence",
-        "baseScore": 8
-      },
-      {
-        "key": "wisdom",
-        "baseScore": 8
-      },
-      {
-        "key": "charisma",
-        "baseScore": 8
-      }
-    ]
-  },
-  "leveling": {
-    "formulaParameters": {
-      "baseExperience": 100,
-      "baseOfMultiplier": 1.2
+    },
+    "leveling": {
+        "formulaParameters": {
+            "baseExperience": 100,
+            "baseOfMultiplier": 1.2
+        }
     }
-  }
 }
