@@ -1,0 +1,75 @@
+## 📋 Feature List
+
+### 🟢 Character Races
+Define unique races such as humans, elves, or dwarves with different experience and attribute bonuses.
+
+### 🟢 Character Classes
+Set up character classes like warrior, mage, or rogue with starting attribute advantages and specialization.
+
+### 🟢 Character Attributes
+Core stats like strength, dexterity, and intelligence that define character capabilities and growth.
+
+### 🟡 Leveling System
+Dynamic experience-based progression system with increasing XP requirements per level.
+
+- 🟢 🎁 Grants attribute points per level-up
+- ⚪️ 🆙 Automatically handles multi-level ups in one XP gain
+
+### ⚪️ Attribute Points Allocation
+Distribute earned points into attributes manually or automatically upon leveling up.
+
+### ⚪️ Skills System
+Active or passive abilities that scale with character level or attributes.
+
+### ⚪️ Equipment System
+Gear system for weapons, armor, and accessories that boost stats or unlock effects.
+
+### ⚪️ Inventory System
+Track owned items, limit capacity, and manage equipment or crafting materials.
+
+### ⚪️ Adventure System
+Define missions or idle activities that reward XP, loot, or story progression.
+
+### ⚪️ Enemy System
+Configure enemy types, stats, scaling behavior, and potential rewards.
+
+### ⚪️ Battle System
+Turn-based or simulated combat engine to resolve encounters between characters and enemies.
+
+### ⚪️ Status Effects (Buffs & Debuffs)
+Temporary effects that enhance or hinder characters or enemies during battles.
+
+### ⚪️ Quest System
+Structured tasks or storylines with specific objectives and multi-step rewards.
+
+### ⚪️ Achievement System
+Persistent challenges with rewards for long-term goals and player engagement.
+
+### ⚪️ Crafting System
+Combine resources to create equipment, potions, or other usable items.
+
+### ⚪️ Zones / Regions
+World structure divided into areas with different enemies, quests, and events.
+
+### ⚪️ Save & Load System
+Serialization of game state for persistence between sessions or devices.
+
+### ⚪️ Companion / Pet System
+Support characters that assist in battle or provide passive bonuses.
+
+### ⚪️ Factions / Guilds
+Group mechanics for alliances, rivalries, and reputation-based systems.
+
+### ⚪️ Prestige / Rebirth System
+Reset progression in exchange for permanent bonuses and replayability.
+
+### ⚪️ Idle Mechanics
+Background systems for generating progress while the player is offline or inactive.
+
+
+### Notes
+
+🟢: Done
+🟡: In progress
+⚪️: Not yet any action
+🔴: Cancelled
