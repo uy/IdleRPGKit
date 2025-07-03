@@ -7,7 +7,7 @@
 
 public struct IdleRPGCharacterProgressAttributeModel: Codable, Hashable {
     public let key: String
-    public let attribute: Int
+    public var attribute: Int
     
     public func hash(into hasher: inout Hasher) {
         hasher.combine(key)
