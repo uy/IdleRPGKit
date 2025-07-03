@@ -5,27 +5,24 @@
 //  Created by Utku Yeğen on 30.06.2025.
 //
 
-//public struct IdleRPGCharacterProgressModel: Codable {
-//    public let race: IdleRPGRaceModel
-//    public let clas: IdleRPGClasModel
-//    public var level: Int
-//    public var currentExperience: Int
-//}
-
 import Combine
 
 public class IdleRPGCharacterProgressModel: ObservableObject, Codable {
     public let race: IdleRPGRaceModel
     public let clas: IdleRPGClasModel
 
+    @Published public var attributes: [IdleRPGCharacterProgressAttributeModel]
+    @Published public var freeAttributePoints: Int
     @Published public var level: Int
     @Published public var currentExperience: Int
 
     enum CodingKeys: CodingKey {
-        case race, clas, level, currentExperience
+        case race, clas, level, currentExperience, attributes, freeAttributePoints
     }
 
     public init(
+        attributes: [IdleRPGCharacterAttributeModel],
+        freeAttributePoints: Int,
         race: IdleRPGRaceModel,
         clas: IdleRPGClasModel,
         level: Int,
@@ -35,6 +32,20 @@ public class IdleRPGCharacterProgressModel: ObservableObject, Codable {
         self.clas = clas
         self.level = level
         self.currentExperience = currentExperience
+        self.freeAttributePoints = freeAttributePoints
+        self.attributes = attributes.map { baseAttribute in
+            if let startingBonusAttribute = clas.startingBonusAttributes.first(where: { $0.key == baseAttribute.key }) {
+                IdleRPGCharacterProgressAttributeModel(
+                    key: baseAttribute.key,
+                    attribute: baseAttribute.baseScore + startingBonusAttribute.bonus
+                )
+            } else {
+                IdleRPGCharacterProgressAttributeModel(
+                    key: baseAttribute.key,
+                    attribute: baseAttribute.baseScore
+                )
+            }
+        }
     }
 
     public required init(from decoder: Decoder) throws {
@@ -43,6 +54,8 @@ public class IdleRPGCharacterProgressModel: ObservableObject, Codable {
         self.clas = try container.decode(IdleRPGClasModel.self, forKey: .clas)
         self.level = try container.decode(Int.self, forKey: .level)
         self.currentExperience = try container.decode(Int.self, forKey: .currentExperience)
+        self.attributes = try container.decode([IdleRPGCharacterProgressAttributeModel].self, forKey: .attributes)
+        self.freeAttributePoints = try container.decode(Int.self, forKey: .freeAttributePoints)
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -51,5 +64,7 @@ public class IdleRPGCharacterProgressModel: ObservableObject, Codable {
         try container.encode(clas, forKey: .clas)
         try container.encode(level, forKey: .level)
         try container.encode(currentExperience, forKey: .currentExperience)
+        try container.encode(attributes, forKey: .attributes)
+        try container.encode(freeAttributePoints, forKey: .freeAttributePoints)
     }
 }

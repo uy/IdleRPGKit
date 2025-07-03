@@ -7,4 +7,5 @@
 
 public struct IdleRPGLevelingModel: Codable {
     public let formulaParameters: IdleRPGLevelingFormulaParameters
+    public let attributePointsPerLevel: Int
 }

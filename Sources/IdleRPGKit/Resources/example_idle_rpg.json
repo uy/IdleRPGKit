@@ -107,6 +107,7 @@
         "formulaParameters": {
             "baseExperience": 100,
             "baseOfMultiplier": 1.2
-        }
+        },
+        "attributePointsPerLevel": 2
     }
 }

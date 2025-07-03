@@ -9,11 +9,14 @@ import Foundation
 
 struct IdleRpgLevelingSystem {
     private var formulaParameters: IdleRPGLevelingFormulaParameters
+    private(set) var attributePointsPerLevel: Int
     
     init(
-        leveling model: IdleRPGLevelingModel
+        leveling model: IdleRPGLevelingModel,
+        attributePointsPerLevel: Int
     ) {
         self.formulaParameters = model.formulaParameters
+        self.attributePointsPerLevel = attributePointsPerLevel
     }
     
     private var xpCache: [Int: Int] = [:]

@@ -15,6 +15,7 @@ public class IdleRpgManager: ObservableObject {
     @Published public var gameProgress: IdleRPGGameProgressModel
     @Published public var level: Int = 1
     @Published public var currentXP: Int = 0
+    @Published public var freeAttributePoints: Int = 0
     
     private var levelingSystem: IdleRpgLevelingSystem!
     
@@ -30,6 +31,8 @@ public class IdleRpgManager: ObservableObject {
         } else {
             gameProgress = .init(
                 character: .init(
+                    attributes: baseModel.character.attributes,
+                    freeAttributePoints: 0,
                     race: race,
                     clas: clas,
                     level: 1,
@@ -41,9 +44,11 @@ public class IdleRpgManager: ObservableObject {
         }
         level = gameProgress.character.level
         currentXP = gameProgress.character.currentExperience
+        freeAttributePoints = gameProgress.character.freeAttributePoints
         
         levelingSystem = .init(
-            leveling: baseModel.leveling
+            leveling: baseModel.leveling,
+            attributePointsPerLevel: baseModel.leveling.attributePointsPerLevel
         )
         
         gameProgress.character.$level
@@ -53,6 +58,10 @@ public class IdleRpgManager: ObservableObject {
         gameProgress.character.$currentExperience
             .receive(on: RunLoop.main)
             .assign(to: \.currentXP, on: self)
+            .store(in: &cancellables)
+        gameProgress.character.$freeAttributePoints
+            .receive(on: RunLoop.main)
+            .assign(to: \.freeAttributePoints, on: self)
             .store(in: &cancellables)
     }
     
@@ -71,8 +80,13 @@ public class IdleRpgManager: ObservableObject {
         if newExperience >= xpToNextLevel {
             gameProgress.character.level += 1
             gameProgress.character.currentExperience = newExperience - xpToNextLevel
+            levelUp()
         } else {
             gameProgress.character.currentExperience += amount
         }
+    }
+    
+    private func levelUp() {
+        gameProgress.character.freeAttributePoints += levelingSystem.attributePointsPerLevel
     }
 }
