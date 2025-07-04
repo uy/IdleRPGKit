@@ -66,6 +66,10 @@ public class IdleRpgManager: ObservableObject {
             .store(in: &cancellables)
     }
     
+    public func saveProgress() {
+        IdleRpgUserDefaults.setGameProgress(gameProgress)
+    }
+    
     public func currentXp() -> Int {
         return gameProgress.character.currentExperience
     }
