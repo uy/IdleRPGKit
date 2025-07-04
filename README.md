@@ -13,7 +13,7 @@ Core stats like strength, dexterity, and intelligence that define character capa
 Dynamic experience-based progression system with increasing XP requirements per level.
 
 - 🟢 🎁 Grants attribute points per level-up
-- ⚪️ 🆙 Automatically handles multi-level ups in one XP gain
+- 🟢 🆙 Automatically handles multi-level ups in one XP gain
 
 ### ⚪️ Attribute Points Allocation
 Distribute earned points into attributes manually or automatically upon leveling up.
