@@ -9,7 +9,7 @@ Set up character classes like warrior, mage, or rogue with starting attribute ad
 ### 🟢 Character Attributes
 Core stats like strength, dexterity, and intelligence that define character capabilities and growth.
 
-### 🟡 Leveling System
+### 🟢 Leveling System
 Dynamic experience-based progression system with increasing XP requirements per level.
 
 - 🟢 🎁 Grants attribute points per level-up
