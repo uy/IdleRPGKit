@@ -51,8 +51,8 @@ Combine resources to create equipment, potions, or other usable items.
 ### ⚪️ Zones / Regions
 World structure divided into areas with different enemies, quests, and events.
 
-### ⚪️ Save & Load System
-Serialization of game state for persistence between sessions or devices.
+### 🟢 Save & Load System
+Save current game state to device.
 
 ### ⚪️ Companion / Pet System
 Support characters that assist in battle or provide passive bonuses.
@@ -70,6 +70,9 @@ Background systems for generating progress while the player is offline or inacti
 ### Notes
 
 🟢: Done
+
 🟡: In progress
+
 ⚪️: Not yet any action
+
 🔴: Cancelled
