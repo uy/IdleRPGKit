@@ -7,11 +7,11 @@
 
 import Foundation
 
-struct IdleRpgLevelingSystem {
+public struct IdleRpgLevelingSystem {
     private var formulaParameters: IdleRPGLevelingFormulaParameters
     private(set) var attributePointsPerLevel: Int
     
-    init(
+    public init(
         leveling model: IdleRPGLevelingModel,
         attributePointsPerLevel: Int
     ) {
@@ -20,7 +20,7 @@ struct IdleRpgLevelingSystem {
     }
     
     private var xpCache: [Int: Int] = [:]
-    mutating func xpToNextLevel(_ level: Int) -> Int {
+    public mutating func xpToNextLevel(_ level: Int) -> Int {
         if let cached = xpCache[level] {
             return cached
         }
