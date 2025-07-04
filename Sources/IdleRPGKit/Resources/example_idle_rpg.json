@@ -109,5 +109,53 @@
             "baseOfMultiplier": 1.2
         },
         "attributePointsPerLevel": 2
+    },
+    "equipment": {
+        "equipmentSlot": [
+            {
+                "key": "head",
+                "labelKey": "equipment.slot.head"
+            },
+            {
+                "key": "body",
+                "labelKey": "equipment.slot.body"
+            },
+            {
+                "key": "legs",
+                "labelKey": "equipment.slot.legs"
+            },
+            {
+                "key": "feet",
+                "labelKey": "equipment.slot.feet"
+            },
+            {
+                "key": "hands",
+                "labelKey": "equipment.slot.hands"
+            },
+            {
+                "key": "weapon",
+                "labelKey": "equipment.slot.weapon"
+            },
+            {
+                "key": "offhand",
+                "labelKey": "equipment.slot.offhand"
+            },
+            {
+                "key": "ring",
+                "labelKey": "equipment.slot.ring"
+            },
+            {
+                "key": "amulet",
+                "labelKey": "equipment.slot.amulet"
+            },
+            {
+                "key": "belt",
+                "labelKey": "equipment.slot.belt"
+            },
+            {
+                "key": "back",
+                "labelKey": "equipment.slot.back"
+            }
+        ]
     }
 }
