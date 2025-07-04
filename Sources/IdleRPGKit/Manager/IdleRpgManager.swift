@@ -137,11 +137,13 @@ public class IdleRpgManager: ObservableObject {
     }
     
     public func discardGivenAttributePoints() {
+        guard !givenAttributePoints.isEmpty else { return }
         gameProgress.character.freeAttributePoints = givenAttributePoints.count
         givenAttributePoints.removeAll()
     }
     
     public func saveGivenAttributePoints() {
+        guard !givenAttributePoints.isEmpty else { return }
         givenAttributePoints.forEach { givenAttributePoint in
             if let index = gameProgress.character.attributes.firstIndex(where: { $0.key == givenAttributePoint.key }) {
                 gameProgress.character.attributes[index].attribute += givenAttributePoint.value
