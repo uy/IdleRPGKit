@@ -75,15 +75,34 @@ public class IdleRpgManager: ObservableObject {
     }
     
     public func gainXp(_ amount: Int) {
-        let newExperience = gameProgress.character.currentExperience + amount
-        let xpToNextLevel = xpToNextLevel()
-        
-        if newExperience >= xpToNextLevel {
-            gameProgress.character.level += 1
-            gameProgress.character.currentExperience = newExperience - xpToNextLevel
-            levelUp()
+        var expToNextLevel = xpToNextLevel()
+        if amount <= expToNextLevel {
+            let newExperience = gameProgress.character.currentExperience + amount
+            
+            if newExperience >= expToNextLevel {
+                gameProgress.character.level += 1
+                gameProgress.character.currentExperience = newExperience - expToNextLevel
+                levelUp()
+            } else {
+                gameProgress.character.currentExperience += amount
+            }
         } else {
-            gameProgress.character.currentExperience += amount
+            var expToGive = amount
+            
+            while expToGive > 0 {
+                expToNextLevel = xpToNextLevel()
+                
+                gameProgress.character.level += 1
+                levelUp()
+                
+                let diff = expToGive - expToNextLevel
+                if diff < xpToNextLevel() {
+                    gameProgress.character.currentExperience = diff
+                    expToGive = 0
+                } else {
+                    expToGive = diff
+                }
+            }
         }
     }
     
