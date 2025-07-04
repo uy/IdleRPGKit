@@ -15,7 +15,7 @@ Dynamic experience-based progression system with increasing XP requirements per 
 - 🟢 🎁 Grants attribute points per level-up
 - 🟢 🆙 Automatically handles multi-level ups in one XP gain
 
-### ⚪️ Attribute Points Allocation
+### 🟢 Attribute Points Allocation
 Distribute earned points into attributes manually or automatically upon leveling up.
 
 ### ⚪️ Skills System
