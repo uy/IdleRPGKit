@@ -19,6 +19,7 @@ public class IdleRpgManager: ObservableObject {
     @Published public var givenAttributePoints: [IdleRpgGivenAttributePoint] = []
     
     public var levelingSystem: IdleRpgLevelingSystem!
+    public var equipmentSystem: IdleRpgEquipmentSystem!
     
     public init(
         baseModel: IdleRPGBaseModel,
@@ -50,6 +51,9 @@ public class IdleRpgManager: ObservableObject {
         levelingSystem = .init(
             leveling: baseModel.leveling,
             attributePointsPerLevel: baseModel.leveling.attributePointsPerLevel
+        )
+        equipmentSystem = .init(
+            equipment: baseModel.equipment
         )
         
         gameProgress.character.$level
