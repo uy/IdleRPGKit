@@ -21,7 +21,7 @@ Distribute earned points into attributes manually or automatically upon leveling
 ### ⚪️ Skills System
 Active or passive abilities that scale with character level or attributes.
 
-### 🟡 Equipment System
+### 🟢 Equipment System
 Gear system for weapons, armor, and accessories that boost stats or unlock effects.
 
 Completed...
