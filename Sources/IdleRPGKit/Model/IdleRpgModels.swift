@@ -10,4 +10,5 @@ import Foundation
 public struct IdleRPGBaseModel: Codable {
     public let character: IdleRPGCharacterModel
     public let leveling: IdleRPGLevelingModel
+    public let equipment: IdleRpgEquipment
 }

@@ -109,5 +109,495 @@
             "baseOfMultiplier": 1.2
         },
         "attributePointsPerLevel": 2
+    },
+    "equipment": {
+        "equipmentSlot": [
+            {
+                "key": "head",
+                "labelKey": "equipment.slot.head"
+            },
+            {
+                "key": "body",
+                "labelKey": "equipment.slot.body"
+            },
+            {
+                "key": "legs",
+                "labelKey": "equipment.slot.legs"
+            },
+            {
+                "key": "feet",
+                "labelKey": "equipment.slot.feet"
+            },
+            {
+                "key": "hands",
+                "labelKey": "equipment.slot.hands"
+            },
+            {
+                "key": "weapon",
+                "labelKey": "equipment.slot.weapon"
+            },
+            {
+                "key": "offhand",
+                "labelKey": "equipment.slot.offhand"
+            },
+            {
+                "key": "ring",
+                "labelKey": "equipment.slot.ring"
+            },
+            {
+                "key": "amulet",
+                "labelKey": "equipment.slot.amulet"
+            },
+            {
+                "key": "belt",
+                "labelKey": "equipment.slot.belt"
+            },
+            {
+                "key": "back",
+                "labelKey": "equipment.slot.back"
+            }
+        ],
+        "equipments": [
+            {
+                "id": "leather_cap",
+                "name": "Leather Cap",
+                "slotKey": "head",
+                "rarity": "common",
+                "baseBonuses": [{ "attributeKey": "dexterity", "bonus": 1 }],
+                "properties": { "armorValue": 2 }
+            },
+            {
+                "id": "iron_helm",
+                "name": "Iron Helm",
+                "slotKey": "head",
+                "rarity": "uncommon",
+                "baseBonuses": [{ "attributeKey": "constitution", "bonus": 2 }],
+                "properties": { "armorValue": 4 }
+            },
+            {
+                "id": "mage_hat",
+                "name": "Mage Hat",
+                "slotKey": "head",
+                "rarity": "rare",
+                "baseBonuses": [{ "attributeKey": "intelligence", "bonus": 3 }],
+                "properties": { "magicPower": 5 }
+            },
+            {
+                "id": "hood_of_shadows",
+                "name": "Hood of Shadows",
+                "slotKey": "head",
+                "rarity": "epic",
+                "baseBonuses": [{ "attributeKey": "agility", "bonus": 3 }],
+                "properties": { "dodgeChance": 0.15 }
+            },
+            {
+                "id": "helm_of_light",
+                "name": "Helm of Light",
+                "slotKey": "head",
+                "rarity": "legendary",
+                "baseBonuses": [{ "attributeKey": "wisdom", "bonus": 4 }],
+                "properties": { "holyPower": 10 }
+            },
+            {
+                "id": "leather_armor",
+                "name": "Leather Armor",
+                "slotKey": "body",
+                "rarity": "common",
+                "baseBonuses": [{ "attributeKey": "agility", "bonus": 1 }],
+                "properties": { "armorValue": 3 }
+            },
+            {
+                "id": "iron_chestplate",
+                "name": "Iron Chestplate",
+                "slotKey": "body",
+                "rarity": "uncommon",
+                "baseBonuses": [{ "attributeKey": "constitution", "bonus": 2 }],
+                "properties": { "armorValue": 6 }
+            },
+            {
+                "id": "robe_of_the_magi",
+                "name": "Robe of the Magi",
+                "slotKey": "body",
+                "rarity": "rare",
+                "baseBonuses": [{ "attributeKey": "intelligence", "bonus": 3 }],
+                "properties": { "magicPower": 8 }
+            },
+            {
+                "id": "shadow_cuirass",
+                "name": "Shadow Cuirass",
+                "slotKey": "body",
+                "rarity": "epic",
+                "baseBonuses": [{ "attributeKey": "dexterity", "bonus": 3 }],
+                "properties": { "stealthBonus": 10 }
+            },
+            {
+                "id": "divine_plate",
+                "name": "Divine Plate",
+                "slotKey": "body",
+                "rarity": "legendary",
+                "baseBonuses": [{ "attributeKey": "strength", "bonus": 4 }],
+                "properties": { "armorValue": 12 }
+            },
+            {
+                "id": "cloth_pants",
+                "name": "Cloth Pants",
+                "slotKey": "legs",
+                "rarity": "common",
+                "baseBonuses": [{ "attributeKey": "charisma", "bonus": 1 }],
+                "properties": { "armorValue": 1 }
+            },
+            {
+                "id": "iron_greaves",
+                "name": "Iron Greaves",
+                "slotKey": "legs",
+                "rarity": "uncommon",
+                "baseBonuses": [{ "attributeKey": "strength", "bonus": 2 }],
+                "properties": { "armorValue": 5 }
+            },
+            {
+                "id": "mystic_leggings",
+                "name": "Mystic Leggings",
+                "slotKey": "legs",
+                "rarity": "rare",
+                "baseBonuses": [{ "attributeKey": "wisdom", "bonus": 3 }],
+                "properties": { "manaRegen": 2 }
+            },
+            {
+                "id": "leggings_of_speed",
+                "name": "Leggings of Speed",
+                "slotKey": "legs",
+                "rarity": "epic",
+                "baseBonuses": [{ "attributeKey": "agility", "bonus": 3 }],
+                "properties": { "movementSpeed": 1.2 }
+            },
+            {
+                "id": "dragonbone_pants",
+                "name": "Dragonbone Pants",
+                "slotKey": "legs",
+                "rarity": "legendary",
+                "baseBonuses": [{ "attributeKey": "constitution", "bonus": 4 }],
+                "properties": { "fireResist": 15 }
+            },
+            {
+                "id": "leather_boots",
+                "name": "Leather Boots",
+                "slotKey": "feet",
+                "rarity": "common",
+                "baseBonuses": [{ "attributeKey": "agility", "bonus": 1 }],
+                "properties": { "movementSpeed": 1.05 }
+            },
+            {
+                "id": "iron_boots",
+                "name": "Iron Boots",
+                "slotKey": "feet",
+                "rarity": "uncommon",
+                "baseBonuses": [{ "attributeKey": "strength", "bonus": 1 }],
+                "properties": { "armorValue": 3 }
+            },
+            {
+                "id": "boots_of_silence",
+                "name": "Boots of Silence",
+                "slotKey": "feet",
+                "rarity": "rare",
+                "baseBonuses": [{ "attributeKey": "dexterity", "bonus": 2 }],
+                "properties": { "stealthBonus": 15 }
+            },
+            {
+                "id": "windrider_boots",
+                "name": "Windrider Boots",
+                "slotKey": "feet",
+                "rarity": "epic",
+                "baseBonuses": [{ "attributeKey": "agility", "bonus": 4 }],
+                "properties": { "jumpHeight": 1.3 }
+            },
+            {
+                "id": "storm_greaves",
+                "name": "Storm Greaves",
+                "slotKey": "feet",
+                "rarity": "legendary",
+                "baseBonuses": [{ "attributeKey": "strength", "bonus": 3 }],
+                "properties": { "electricResist": 10 }
+            },
+            {
+                "id": "cloth_gloves",
+                "name": "Cloth Gloves",
+                "slotKey": "hands",
+                "rarity": "common",
+                "baseBonuses": [{ "attributeKey": "dexterity", "bonus": 1 }],
+                "properties": { "craftingSpeed": 1.1 }
+            },
+            {
+                "id": "iron_gauntlets",
+                "name": "Iron Gauntlets",
+                "slotKey": "hands",
+                "rarity": "uncommon",
+                "baseBonuses": [{ "attributeKey": "strength", "bonus": 2 }],
+                "properties": { "armorValue": 4 }
+            },
+            {
+                "id": "spellwoven_gloves",
+                "name": "Spellwoven Gloves",
+                "slotKey": "hands",
+                "rarity": "rare",
+                "baseBonuses": [{ "attributeKey": "intelligence", "bonus": 3 }],
+                "properties": { "castingSpeed": 1.2 }
+            },
+            {
+                "id": "shadow_claws",
+                "name": "Shadow Claws",
+                "slotKey": "hands",
+                "rarity": "epic",
+                "baseBonuses": [{ "attributeKey": "agility", "bonus": 2 }],
+                "properties": { "criticalChance": 0.2 }
+            },
+            {
+                "id": "gauntlets_of_power",
+                "name": "Gauntlets of Power",
+                "slotKey": "hands",
+                "rarity": "legendary",
+                "baseBonuses": [{ "attributeKey": "strength", "bonus": 5 }],
+                "properties": { "attackDamage": 6 }
+            },
+            {
+                "id": "wooden_sword",
+                "name": "Wooden Sword",
+                "slotKey": "weapon",
+                "rarity": "common",
+                "baseBonuses": [{ "attributeKey": "strength", "bonus": 1 }],
+                "properties": { "attackDamage": 5 }
+            },
+            {
+                "id": "iron_axe",
+                "name": "Iron Axe",
+                "slotKey": "weapon",
+                "rarity": "uncommon",
+                "baseBonuses": [{ "attributeKey": "strength", "bonus": 2 }],
+                "properties": { "attackDamage": 7 }
+            },
+            {
+                "id": "fire_staff",
+                "name": "Fire Staff",
+                "slotKey": "weapon",
+                "rarity": "rare",
+                "baseBonuses": [{ "attributeKey": "intelligence", "bonus": 3 }],
+                "properties": { "firePower": 10 }
+            },
+            {
+                "id": "bow_of_speed",
+                "name": "Bow of Speed",
+                "slotKey": "weapon",
+                "rarity": "epic",
+                "baseBonuses": [{ "attributeKey": "dexterity", "bonus": 4 }],
+                "properties": { "attackDamage": 6, "attackSpeed": 1.3 }
+            },
+            {
+                "id": "blade_of_chaos",
+                "name": "Blade of Chaos",
+                "slotKey": "weapon",
+                "rarity": "legendary",
+                "baseBonuses": [{ "attributeKey": "strength", "bonus": 5 }],
+                "properties": { "attackDamage": 12, "criticalChance": 0.2 }
+            },
+            {
+                "id": "wooden_shield",
+                "name": "Wooden Shield",
+                "slotKey": "offhand",
+                "rarity": "common",
+                "baseBonuses": [],
+                "properties": { "blockChance": 0.1 }
+            },
+            {
+                "id": "buckler",
+                "name": "Buckler",
+                "slotKey": "offhand",
+                "rarity": "uncommon",
+                "baseBonuses": [{ "attributeKey": "dexterity", "bonus": 1 }],
+                "properties": { "blockChance": 0.15 }
+            },
+            {
+                "id": "crystal_talisman",
+                "name": "Crystal Talisman",
+                "slotKey": "offhand",
+                "rarity": "rare",
+                "baseBonuses": [{ "attributeKey": "wisdom", "bonus": 3 }],
+                "properties": { "magicShield": 8 }
+            },
+            {
+                "id": "mirror_shield",
+                "name": "Mirror Shield",
+                "slotKey": "offhand",
+                "rarity": "epic",
+                "baseBonuses": [],
+                "properties": { "blockChance": 0.25, "reflectChance": 0.1 }
+            },
+            {
+                "id": "aegis",
+                "name": "Aegis",
+                "slotKey": "offhand",
+                "rarity": "legendary",
+                "baseBonuses": [{ "attributeKey": "constitution", "bonus": 4 }],
+                "properties": { "blockChance": 0.3, "armorValue": 8 }
+            },
+            {
+                "id": "iron_ring",
+                "name": "Iron Ring",
+                "slotKey": "ring",
+                "rarity": "common",
+                "baseBonuses": [{ "attributeKey": "strength", "bonus": 1 }],
+                "properties": {}
+            },
+            {
+                "id": "ring_of_vision",
+                "name": "Ring of Vision",
+                "slotKey": "ring",
+                "rarity": "uncommon",
+                "baseBonuses": [{ "attributeKey": "intelligence", "bonus": 2 }],
+                "properties": { "manaRegen": 1 }
+            },
+            {
+                "id": "fire_ring",
+                "name": "Fire Ring",
+                "slotKey": "ring",
+                "rarity": "rare",
+                "baseBonuses": [{ "attributeKey": "wisdom", "bonus": 2 }],
+                "properties": { "firePower": 4 }
+            },
+            {
+                "id": "ring_of_swiftness",
+                "name": "Ring of Swiftness",
+                "slotKey": "ring",
+                "rarity": "epic",
+                "baseBonuses": [{ "attributeKey": "agility", "bonus": 3 }],
+                "properties": { "movementSpeed": 1.2 }
+            },
+            {
+                "id": "ring_of_immortality",
+                "name": "Ring of Immortality",
+                "slotKey": "ring",
+                "rarity": "legendary",
+                "baseBonuses": [{ "attributeKey": "constitution", "bonus": 5 }],
+                "properties": { "lifeRegen": 2 }
+            },
+            {
+                "id": "wooden_amulet",
+                "name": "Wooden Amulet",
+                "slotKey": "amulet",
+                "rarity": "common",
+                "baseBonuses": [{ "attributeKey": "wisdom", "bonus": 1 }],
+                "properties": {}
+            },
+            {
+                "id": "amulet_of_focus",
+                "name": "Amulet of Focus",
+                "slotKey": "amulet",
+                "rarity": "uncommon",
+                "baseBonuses": [{ "attributeKey": "intelligence", "bonus": 2 }],
+                "properties": { "criticalChance": 0.05 }
+            },
+            {
+                "id": "glowing_amulet",
+                "name": "Glowing Amulet",
+                "slotKey": "amulet",
+                "rarity": "rare",
+                "baseBonuses": [{ "attributeKey": "charisma", "bonus": 3 }],
+                "properties": { "magicPower": 6 }
+            },
+            {
+                "id": "void_pendant",
+                "name": "Void Pendant",
+                "slotKey": "amulet",
+                "rarity": "epic",
+                "baseBonuses": [],
+                "properties": { "cursePower": 8 }
+            },
+            {
+                "id": "sunstone_amulet",
+                "name": "Sunstone Amulet",
+                "slotKey": "amulet",
+                "rarity": "legendary",
+                "baseBonuses": [{ "attributeKey": "wisdom", "bonus": 4 }],
+                "properties": { "holyPower": 12 }
+            },
+            {
+                "id": "leather_belt",
+                "name": "Leather Belt",
+                "slotKey": "belt",
+                "rarity": "common",
+                "baseBonuses": [{ "attributeKey": "constitution", "bonus": 1 }],
+                "properties": {}
+            },
+            {
+                "id": "tool_belt",
+                "name": "Tool Belt",
+                "slotKey": "belt",
+                "rarity": "uncommon",
+                "baseBonuses": [{ "attributeKey": "dexterity", "bonus": 2 }],
+                "properties": { "craftingSpeed": 1.1 }
+            },
+            {
+                "id": "belt_of_strength",
+                "name": "Belt of Strength",
+                "slotKey": "belt",
+                "rarity": "rare",
+                "baseBonuses": [{ "attributeKey": "strength", "bonus": 3 }],
+                "properties": {}
+            },
+            {
+                "id": "serpent_belt",
+                "name": "Serpent Belt",
+                "slotKey": "belt",
+                "rarity": "epic",
+                "baseBonuses": [{ "attributeKey": "agility", "bonus": 3 }],
+                "properties": { "poisonResist": 10 }
+            },
+            {
+                "id": "titan_belt",
+                "name": "Titan Belt",
+                "slotKey": "belt",
+                "rarity": "legendary",
+                "baseBonuses": [{ "attributeKey": "strength", "bonus": 5 }],
+                "properties": { "carryCapacity": 50 }
+            },
+            {
+                "id": "adventurer_cape",
+                "name": "Adventurer Cape",
+                "slotKey": "back",
+                "rarity": "common",
+                "baseBonuses": [],
+                "properties": { "movementSpeed": 1.05 }
+            },
+            {
+                "id": "backpack",
+                "name": "Backpack",
+                "slotKey": "back",
+                "rarity": "uncommon",
+                "baseBonuses": [],
+                "properties": { "inventorySlots": 5 }
+            },
+            {
+                "id": "cloak_of_invisibility",
+                "name": "Cloak of Invisibility",
+                "slotKey": "back",
+                "rarity": "rare",
+                "baseBonuses": [{ "attributeKey": "dexterity", "bonus": 3 }],
+                "properties": { "stealthBonus": 20 }
+            },
+            {
+                "id": "phoenix_cape",
+                "name": "Phoenix Cape",
+                "slotKey": "back",
+                "rarity": "epic",
+                "baseBonuses": [],
+                "properties": { "fireResist": 20 }
+            },
+            {
+                "id": "wings_of_the_fallen",
+                "name": "Wings of the Fallen",
+                "slotKey": "back",
+                "rarity": "legendary",
+                "baseBonuses": [{ "attributeKey": "agility", "bonus": 5 }],
+                "properties": { "flyTime": 10 }
+            }
+        ]
     }
 }
