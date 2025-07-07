@@ -12,7 +12,7 @@ public class IdleRpgManager: ObservableObject {
     private var baseModel: IdleRPGBaseModel
     
     private var cancellables = Set<AnyCancellable>()
-    @Published public var gameProgress: IdleRPGGameProgressModel
+    public var gameProgress: IdleRPGGameProgressModel
     @Published public var level: Int = 1
     @Published public var currentXP: Int = 0
     @Published public var freeAttributePoints: Int = 0
@@ -20,6 +20,7 @@ public class IdleRpgManager: ObservableObject {
     
     public var levelingSystem: IdleRpgLevelingSystem!
     public var equipmentSystem: IdleRpgEquipmentSystem!
+    public var inventorySystem: IdleRpgInventorySystem!
     
     public init(
         baseModel: IdleRPGBaseModel,
@@ -39,7 +40,8 @@ public class IdleRpgManager: ObservableObject {
                     clas: clas,
                     level: 1,
                     currentExperience: 0
-                )
+                ),
+                inventoryItems: []
             )
             
             IdleRpgUserDefaults.setGameProgress(gameProgress)
@@ -54,6 +56,9 @@ public class IdleRpgManager: ObservableObject {
         )
         equipmentSystem = .init(
             equipment: baseModel.equipment
+        )
+        inventorySystem = .init(
+            items: gameProgress.inventoryItems
         )
         
         gameProgress.character.$level
