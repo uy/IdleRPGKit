@@ -46,38 +46,54 @@ Active or passive abilities that scale with character level or attributes.
 ### 🟢 Equipment System
 <details>
 <summary>Detail</summary>
-Gear system for weapons, armor, and accessories that boost stats or unlock effects.
-
-Wroking on...
-#### 🔹 Slot Management
-- Dynamically loads and stores available equipment slots from JSON.
-- Each slot is identified by a unique `key` and a localizable `labelKey`.
-
-#### 🔹 Equipment Pool
-- Centralized list of all available equipment items (`equipmentsPool`).
-- Items include statically defined attributes and metadata such as:
-  - `rarity` (e.g., `common`, `rare`, `epic`)
-  - `baseBonuses` (e.g., strength +3)
-
-#### 🔹 Slot-Based Filtering
-- Use `equipmentsFor(slot:)` to fetch items matching a specific equipment slot.
-- Enables modular UI rendering and user interaction per equipment type.
-
-#### 🔹 Pool Metrics
-- `equipmentsPoolCount` provides a quick overview of total item count.
-- Useful for displaying inventory size or debug logging.
+The **Equipment System** manages all defined equipment slots and items in the game. It allows slot-based filtering of items and serves as the foundation for equipping and stat-boosting mechanics.
 
 ---
 
-Planned Extensions...
-#### 🧪 RNG-Based Rarity Effects *(planned)*
-- Item rarity will influence the chance to roll additional attributes or properties.
-- Example: rare items may gain random secondary bonuses (`+crit`, `+agility`, `lifesteal`).
+### ✅ Features (Implemented)
 
-#### 🧬 Procedural Bonus Attributes *(planned)*
-- Define a pool of bonus attribute templates in JSON.
-- Upon item generation, extra bonuses will be rolled based on rarity and item type.
-- Supports extensible systems like prefixes/suffixes or enchantments.
+#### 🔹 Slot Management
+- Loads all available equipment slots from JSON (`equipmentSlot` array).
+- Each slot includes a `key` and a localizable `labelKey`.
+
+#### 🔹 Equipment Pool
+- Loads equipment items from a JSON-defined pool (`equipments`).
+- Each item includes:
+  - `id`, `name`, `slotKey`, `rarity`
+  - `baseBonuses`: static attribute boosts (e.g., +3 strength)
+  - `properties`: customizable stats (e.g., `attackDamage`, `critChance`)
+  - `tags`: optional semantic tags for filtering or traits
+
+#### 🔹 Slot-Based Filtering
+- `equipmentsFor(slot:)` filters the equipment pool by slot key.
+
+#### 🔹 Pool Summary
+- `equipmentsPoolCount` provides item count for UI/debug use.
+
+---
+
+### 🧩 Planned / Not Yet Implemented
+
+#### 🔸 Equipping Items
+- Equipping logic for assigning an item to a slot is not handled here yet.
+- Expected to be done by `Character` or `Inventory` modules.
+
+#### 🔸 Inventory Integration
+- The system currently shows a global pool instead of player-owned items.
+- Real item filtering should be based on a player's inventory contents.
+
+#### 🔸 RNG-based Item Generation
+- Rarity currently exists but does not influence randomized bonuses.
+- Future system may dynamically add procedural attributes based on `rarity`.
+
+#### 🔸 Equip/Unequip API
+- API for equipping or unequipping an item (e.g., `equipItem(to:)`) is not included yet.
+- Could be added inside a `CharacterEquipment` manager or controller layer.
+
+---
+
+> ⚠️ This module currently provides static data and utility access to slots and item definitions.
+> It does **not** handle character stat calculation, inventory ownership, or runtime RNG logic yet.
 </details>
 
 ### ⚪️ Inventory System
