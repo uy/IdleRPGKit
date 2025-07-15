@@ -8,7 +8,9 @@
 
 import Foundation
 
-public struct IdleRpgAttributeBonus: Codable, Hashable {
+public struct IdleRpgAttributeBonus: Codable, Hashable, Identifiable {
+    public let id = UUID()
+    
     public let attributeKey: String
     public let bonus: Int
 

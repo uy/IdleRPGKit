@@ -34,4 +34,8 @@ public struct IdleRpgEquipmentItem: Codable, Identifiable, Hashable {
         self.properties = properties
         self.tags = tags
     }
+    
+    public func getAsInventoryItem() -> IdleRpgInventoryItem {
+        return .init(baseItemId: self.id)
+    }
 }

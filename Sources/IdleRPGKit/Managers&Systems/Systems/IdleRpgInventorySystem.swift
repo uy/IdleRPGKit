@@ -8,7 +8,7 @@
 import Foundation
 
 public struct IdleRpgInventorySystem {
-    private(set) var items: [IdleRpgInventoryItem]
+    public private(set) var items: [IdleRpgInventoryItem]
     
     public var itemCount: Int {
         items.count
