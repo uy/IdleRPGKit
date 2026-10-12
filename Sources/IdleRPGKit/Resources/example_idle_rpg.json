@@ -117,6 +117,58 @@
     "inventory": {
         "maxSlots": 12
     },
+    "enemies": {
+        "scaling": {
+            "statGrowthPerLevel": 0.15
+        },
+        "catalog": [
+            {
+                "id": "slime",
+                "name": "Slime",
+                "level": 1,
+                "baseHealth": 20,
+                "baseAttackDamage": 3,
+                "baseDefense": 1,
+                "rewardXp": 10
+            },
+            {
+                "id": "goblin",
+                "name": "Goblin",
+                "level": 3,
+                "baseHealth": 40,
+                "baseAttackDamage": 6,
+                "baseDefense": 3,
+                "rewardXp": 25
+            },
+            {
+                "id": "wolf",
+                "name": "Wolf",
+                "level": 5,
+                "baseHealth": 60,
+                "baseAttackDamage": 10,
+                "baseDefense": 4,
+                "rewardXp": 40
+            },
+            {
+                "id": "orc",
+                "name": "Orc",
+                "level": 8,
+                "baseHealth": 100,
+                "baseAttackDamage": 15,
+                "baseDefense": 8,
+                "rewardXp": 70
+            },
+            {
+                "id": "dragon",
+                "name": "Dragon",
+                "level": 15,
+                "baseHealth": 300,
+                "baseAttackDamage": 40,
+                "baseDefense": 20,
+                "rewardXp": 250
+            }
+        ]
+    },
     "equipment": {
         "rarityBonusMultipliers": {
             "common": { "min": 0.9, "max": 1.1 },

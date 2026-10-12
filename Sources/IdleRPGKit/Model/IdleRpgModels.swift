@@ -13,4 +13,5 @@ public struct IdleRPGBaseModel: Codable {
     public let equipment: IdleRpgEquipment
     public let idleMechanics: IdleRPGIdleMechanicsModel
     public let inventory: IdleRPGInventoryModel
+    public let enemies: IdleRpgEnemyCatalog
 }
