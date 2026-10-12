@@ -15,35 +15,17 @@ extension IdleRpgManager {
     }
     
     public func gainXp(_ amount: Int) {
-        var expToNextLevel = xpToNextLevel()
-        if amount <= expToNextLevel {
-            let newExperience = gameProgress.character.currentExperience + amount
-            
-            if newExperience >= expToNextLevel {
-                gameProgress.character.level += 1
-                gameProgress.character.currentExperience = newExperience - expToNextLevel
-                levelUp()
-            } else {
-                gameProgress.character.currentExperience += amount
-            }
-        } else {
-            var expToGive = amount
-            
-            while expToGive > 0 {
-                expToNextLevel = xpToNextLevel()
-                
-                gameProgress.character.level += 1
-                levelUp()
-                
-                let diff = expToGive - expToNextLevel
-                if diff < xpToNextLevel() {
-                    gameProgress.character.currentExperience = diff
-                    expToGive = 0
-                } else {
-                    expToGive = diff
-                }
-            }
+        var totalExperience = gameProgress.character.currentExperience + amount
+        var requiredExperience = xpToNextLevel()
+
+        while totalExperience >= requiredExperience {
+            totalExperience -= requiredExperience
+            gameProgress.character.level += 1
+            levelUp()
+            requiredExperience = xpToNextLevel()
         }
+
+        gameProgress.character.currentExperience = totalExperience
     }
     
     private func levelUp() {

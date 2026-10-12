@@ -20,7 +20,14 @@ public class IdleRpgManager: ObservableObject {
     
     public var levelingSystem: IdleRpgLevelingSystem!
     public var equipmentSystem: IdleRpgEquipmentSystem!
-    
+    public var idleMechanicsSystem: IdleRpgIdleMechanicsSystem!
+    public var inventorySystem: IdleRpgInventorySystem!
+
+    let idleProgressEventSubject = PassthroughSubject<IdleRpgIdleProgressEvent, Never>()
+    public var idleProgressEventPublisher: AnyPublisher<IdleRpgIdleProgressEvent, Never> {
+        idleProgressEventSubject.eraseToAnyPublisher()
+    }
+
     public init(
         baseModel: IdleRPGBaseModel,
         race: IdleRPGRaceModel,
@@ -47,6 +54,10 @@ public class IdleRpgManager: ObservableObject {
         level = gameProgress.character.level
         currentXP = gameProgress.character.currentExperience
         freeAttributePoints = gameProgress.character.freeAttributePoints
+
+        if let storedGivenAttributePoints = IdleRpgUserDefaults.getGivenAttributePoints() {
+            givenAttributePoints = storedGivenAttributePoints
+        }
         
         levelingSystem = .init(
             leveling: baseModel.leveling,
@@ -55,7 +66,13 @@ public class IdleRpgManager: ObservableObject {
         equipmentSystem = .init(
             equipment: baseModel.equipment
         )
-        
+        idleMechanicsSystem = .init(
+            idleMechanics: baseModel.idleMechanics
+        )
+        inventorySystem = .init(
+            inventory: baseModel.inventory
+        )
+
         gameProgress.character.$level
             .receive(on: RunLoop.main)
             .assign(to: \.level, on: self)
@@ -68,9 +85,20 @@ public class IdleRpgManager: ObservableObject {
             .receive(on: RunLoop.main)
             .assign(to: \.freeAttributePoints, on: self)
             .store(in: &cancellables)
+
+        // Forwards any other nested `character` change (e.g. ownedItems, equippedInstanceIds)
+        // to this object's own objectWillChange, so SwiftUI views observing `IdleRpgManager`
+        // re-render even for fields that aren't individually mirrored above.
+        gameProgress.character.objectWillChange
+            .receive(on: RunLoop.main)
+            .sink { [weak self] _ in
+                self?.objectWillChange.send()
+            }
+            .store(in: &cancellables)
     }
     
     public func saveProgress() {
         IdleRpgUserDefaults.setGameProgress(gameProgress)
+        IdleRpgUserDefaults.setGivenAttributePoints(givenAttributePoints)
     }
 }

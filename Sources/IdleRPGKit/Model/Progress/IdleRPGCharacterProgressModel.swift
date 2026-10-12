@@ -6,6 +6,7 @@
 //
 
 import Combine
+import Foundation
 
 public class IdleRPGCharacterProgressModel: ObservableObject, Codable {
     public let race: IdleRPGRaceModel
@@ -15,9 +16,12 @@ public class IdleRPGCharacterProgressModel: ObservableObject, Codable {
     @Published public var freeAttributePoints: Int
     @Published public var level: Int
     @Published public var currentExperience: Int
+    @Published public var ownedItems: [IdleRpgOwnedEquipmentItem]
+    @Published public var equippedInstanceIds: [String: UUID]
+    @Published public var lastSeenDate: Date
 
     enum CodingKeys: CodingKey {
-        case race, clas, level, currentExperience, attributes, freeAttributePoints
+        case race, clas, level, currentExperience, attributes, freeAttributePoints, ownedItems, equippedInstanceIds, lastSeenDate
     }
 
     public init(
@@ -26,13 +30,19 @@ public class IdleRPGCharacterProgressModel: ObservableObject, Codable {
         race: IdleRPGRaceModel,
         clas: IdleRPGClasModel,
         level: Int,
-        currentExperience: Int
+        currentExperience: Int,
+        ownedItems: [IdleRpgOwnedEquipmentItem] = [],
+        equippedInstanceIds: [String: UUID] = [:],
+        lastSeenDate: Date = Date()
     ) {
         self.race = race
         self.clas = clas
         self.level = level
         self.currentExperience = currentExperience
         self.freeAttributePoints = freeAttributePoints
+        self.ownedItems = ownedItems
+        self.equippedInstanceIds = equippedInstanceIds
+        self.lastSeenDate = lastSeenDate
         self.attributes = attributes.map { baseAttribute in
             if let startingBonusAttribute = clas.startingBonusAttributes.first(where: { $0.key == baseAttribute.key }) {
                 IdleRPGCharacterProgressAttributeModel(
@@ -56,6 +66,9 @@ public class IdleRPGCharacterProgressModel: ObservableObject, Codable {
         self.currentExperience = try container.decode(Int.self, forKey: .currentExperience)
         self.attributes = try container.decode([IdleRPGCharacterProgressAttributeModel].self, forKey: .attributes)
         self.freeAttributePoints = try container.decode(Int.self, forKey: .freeAttributePoints)
+        self.ownedItems = try container.decodeIfPresent([IdleRpgOwnedEquipmentItem].self, forKey: .ownedItems) ?? []
+        self.equippedInstanceIds = try container.decodeIfPresent([String: UUID].self, forKey: .equippedInstanceIds) ?? [:]
+        self.lastSeenDate = try container.decodeIfPresent(Date.self, forKey: .lastSeenDate) ?? Date()
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -66,5 +79,8 @@ public class IdleRPGCharacterProgressModel: ObservableObject, Codable {
         try container.encode(currentExperience, forKey: .currentExperience)
         try container.encode(attributes, forKey: .attributes)
         try container.encode(freeAttributePoints, forKey: .freeAttributePoints)
+        try container.encode(ownedItems, forKey: .ownedItems)
+        try container.encode(equippedInstanceIds, forKey: .equippedInstanceIds)
+        try container.encode(lastSeenDate, forKey: .lastSeenDate)
     }
 }

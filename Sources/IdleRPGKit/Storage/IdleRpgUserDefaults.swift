@@ -12,6 +12,7 @@ public final class IdleRpgUserDefaults {
         static let selectedRace = "IdleRpg_SelectedRace"
         static let selectedClas = "IdleRpg_SelectedClas"
         static let gameProgress = "IdleRpg_GameProgress"
+        static let givenAttributePoints = "IdleRpg_GivenAttributePoints"
     }
     
     public static func setSelectedRace(_ race: IdleRPGRaceModel) {
@@ -79,7 +80,30 @@ public final class IdleRpgUserDefaults {
                 from: encodedProgress
             )
         else { return nil }
-        
+
         return gameProgress
+    }
+
+    public static func setGivenAttributePoints(_ points: [IdleRpgGivenAttributePoint]) {
+        if let encodedPoints = try? JSONEncoder().encode(points) {
+            UserDefaults.standard.set(
+                encodedPoints,
+                forKey: IdleRpgUserDefaultsKeys.givenAttributePoints
+            )
+        }
+    }
+
+    public static func getGivenAttributePoints() -> [IdleRpgGivenAttributePoint]? {
+        guard
+            let encodedPoints = UserDefaults.standard.object(
+                forKey: IdleRpgUserDefaultsKeys.givenAttributePoints
+            ) as? Data,
+            let points = try? JSONDecoder().decode(
+                [IdleRpgGivenAttributePoint].self,
+                from: encodedPoints
+            )
+        else { return nil }
+
+        return points
     }
 }

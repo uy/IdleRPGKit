@@ -34,10 +34,11 @@ extension IdleRpgManager {
     
     public func discardGivenAttributePoints() {
         guard !givenAttributePoints.isEmpty else { return }
-        gameProgress.character.freeAttributePoints = givenAttributePoints.count
+        gameProgress.character.freeAttributePoints += givenAttributePoints.reduce(0) { $0 + $1.value }
         givenAttributePoints.removeAll()
+        IdleRpgUserDefaults.setGivenAttributePoints(givenAttributePoints)
     }
-    
+
     public func saveGivenAttributePoints() {
         guard !givenAttributePoints.isEmpty else { return }
         givenAttributePoints.forEach { givenAttributePoint in
@@ -46,5 +47,6 @@ extension IdleRpgManager {
             }
         }
         givenAttributePoints.removeAll()
+        IdleRpgUserDefaults.setGivenAttributePoints(givenAttributePoints)
     }
 }

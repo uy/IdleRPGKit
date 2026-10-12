@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct IdleRpgGivenAttributePoint: Identifiable {
+public struct IdleRpgGivenAttributePoint: Identifiable, Codable {
     public let id = UUID()
     let key: String
     var value: Int

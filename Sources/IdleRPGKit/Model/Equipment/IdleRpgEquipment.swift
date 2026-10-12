@@ -8,4 +8,5 @@
 public struct IdleRpgEquipment: Codable {
     public let equipmentSlot: [IdleRpgEquipmentSlot]
     public let equipments: [IdleRpgEquipmentItem]
+    public let rarityBonusMultipliers: IdleRpgRarityBonusMultipliers?
 }

@@ -5,7 +5,7 @@
 //  Created by Utku Yeğen on 5.07.2025.
 //
 
-import SwiftUICore
+import SwiftUI
 
 public struct IdleRpgEquipmentSlot: Codable, Hashable, Identifiable {
     public let key: String
