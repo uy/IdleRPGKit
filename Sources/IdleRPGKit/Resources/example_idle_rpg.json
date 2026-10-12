@@ -159,7 +159,14 @@
                 "baseHealth": 100,
                 "baseAttackDamage": 15,
                 "baseDefense": 8,
-                "rewardXp": 70
+                "rewardXp": 70,
+                "inflicts": {
+                    "id": "weaken",
+                    "name": "Weaken",
+                    "kind": "attackReduction",
+                    "magnitude": 2,
+                    "durationRounds": 3
+                }
             },
             {
                 "id": "dragon",
@@ -168,7 +175,14 @@
                 "baseHealth": 300,
                 "baseAttackDamage": 40,
                 "baseDefense": 20,
-                "rewardXp": 250
+                "rewardXp": 250,
+                "inflicts": {
+                    "id": "burn",
+                    "name": "Burn",
+                    "kind": "damageOverTime",
+                    "magnitude": 3,
+                    "durationRounds": 3
+                }
             }
         ]
     },

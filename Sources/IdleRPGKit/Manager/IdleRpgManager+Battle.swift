@@ -14,11 +14,12 @@ extension IdleRpgManager {
             characterAttackDamage: attributeValue(for: "strength"),
             characterDefense: attributeValue(for: "constitution"),
             characterHealth: battleSystem.characterHealth(forConstitution: attributeValue(for: "constitution")),
-            enemyStats: enemyStats
+            enemyStats: enemyStats,
+            inflicts: enemy.inflicts
         )
 
         guard outcome.won else {
-            return IdleRpgBattleResult(enemyId: enemy.id, won: false, rounds: outcome.rounds, earnedXp: 0, droppedItem: nil)
+            return IdleRpgBattleResult(enemyId: enemy.id, won: false, rounds: outcome.rounds, earnedXp: 0, droppedItem: nil, inflictedEffectName: outcome.appliedEffectName)
         }
 
         gainXp(enemyStats.rewardXp)
@@ -31,6 +32,6 @@ extension IdleRpgManager {
 
         saveProgress()
 
-        return IdleRpgBattleResult(enemyId: enemy.id, won: true, rounds: outcome.rounds, earnedXp: enemyStats.rewardXp, droppedItem: droppedItem)
+        return IdleRpgBattleResult(enemyId: enemy.id, won: true, rounds: outcome.rounds, earnedXp: enemyStats.rewardXp, droppedItem: droppedItem, inflictedEffectName: outcome.appliedEffectName)
     }
 }

@@ -11,4 +11,5 @@ public struct IdleRpgEnemy: Codable, Identifiable, Hashable {
     public let baseAttackDamage: Int
     public let baseDefense: Int
     public let rewardXp: Int
+    public let inflicts: IdleRpgStatusEffect?
 }

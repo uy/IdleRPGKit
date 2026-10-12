@@ -9,4 +9,5 @@ public struct IdleRpgBattleResult {
     public let rounds: Int
     public let earnedXp: Int
     public let droppedItem: IdleRpgOwnedEquipmentItem?
+    public let inflictedEffectName: String?
 }
