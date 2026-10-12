@@ -117,6 +117,9 @@
     "inventory": {
         "maxSlots": 12
     },
+    "battle": {
+        "healthPerConstitutionPoint": 10
+    },
     "enemies": {
         "scaling": {
             "statGrowthPerLevel": 0.15

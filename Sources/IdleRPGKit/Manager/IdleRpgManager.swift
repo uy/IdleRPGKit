@@ -23,6 +23,7 @@ public class IdleRpgManager: ObservableObject {
     public var idleMechanicsSystem: IdleRpgIdleMechanicsSystem!
     public var inventorySystem: IdleRpgInventorySystem!
     public var enemySystem: IdleRpgEnemySystem!
+    public var battleSystem: IdleRpgBattleSystem!
 
     let idleProgressEventSubject = PassthroughSubject<IdleRpgIdleProgressEvent, Never>()
     public var idleProgressEventPublisher: AnyPublisher<IdleRpgIdleProgressEvent, Never> {
@@ -75,6 +76,9 @@ public class IdleRpgManager: ObservableObject {
         )
         enemySystem = .init(
             enemies: baseModel.enemies
+        )
+        battleSystem = .init(
+            battle: baseModel.battle
         )
 
         gameProgress.character.$level
