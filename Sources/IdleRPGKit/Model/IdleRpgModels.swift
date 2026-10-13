@@ -21,4 +21,5 @@ public struct IdleRPGBaseModel: Codable {
     public let craftingMaterials: IdleRpgCraftingMaterialCatalog
     public let craftingRecipes: IdleRpgCraftingRecipeCatalog
     public let zones: IdleRpgZoneCatalog
+    public let companions: IdleRpgCompanionCatalog
 }

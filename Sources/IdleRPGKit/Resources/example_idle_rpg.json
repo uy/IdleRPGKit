@@ -233,6 +233,25 @@
             }
         ]
     },
+    "companions": {
+        "catalog": [
+            {
+                "id": "wolf_pup",
+                "name": "Wolf Pup",
+                "unlockLevel": 1,
+                "passiveBonuses": [{ "attributeKey": "agility", "bonus": 2 }]
+            },
+            {
+                "id": "baby_dragon",
+                "name": "Baby Dragon",
+                "unlockLevel": 10,
+                "passiveBonuses": [
+                    { "attributeKey": "strength", "bonus": 5 },
+                    { "attributeKey": "constitution", "bonus": 3 }
+                ]
+            }
+        ]
+    },
     "enemies": {
         "scaling": {
             "statGrowthPerLevel": 0.15

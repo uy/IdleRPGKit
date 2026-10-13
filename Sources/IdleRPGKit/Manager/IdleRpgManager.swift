@@ -29,6 +29,7 @@ public class IdleRpgManager: ObservableObject {
     public var questSystem: IdleRpgQuestSystem!
     public var craftingSystem: IdleRpgCraftingSystem!
     public var zoneSystem: IdleRpgZoneSystem!
+    public var companionSystem: IdleRpgCompanionSystem!
 
     let idleProgressEventSubject = PassthroughSubject<IdleRpgIdleProgressEvent, Never>()
     public var idleProgressEventPublisher: AnyPublisher<IdleRpgIdleProgressEvent, Never> {
@@ -100,6 +101,9 @@ public class IdleRpgManager: ObservableObject {
         )
         zoneSystem = .init(
             zones: baseModel.zones
+        )
+        companionSystem = .init(
+            companions: baseModel.companions
         )
 
         gameProgress.character.$level
