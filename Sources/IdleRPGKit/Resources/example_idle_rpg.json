@@ -170,6 +170,41 @@
             }
         ]
     },
+    "craftingMaterials": {
+        "catalog": [
+            {
+                "id": "iron_ore",
+                "name": "Iron Ore",
+                "gatherAmount": 2
+            },
+            {
+                "id": "magic_dust",
+                "name": "Magic Dust",
+                "gatherAmount": 1
+            }
+        ]
+    },
+    "craftingRecipes": {
+        "catalog": [
+            {
+                "id": "forge_iron_axe",
+                "name": "Forge Iron Axe",
+                "resultTemplateId": "iron_axe",
+                "requiredMaterials": [
+                    { "materialId": "iron_ore", "quantity": 5 }
+                ]
+            },
+            {
+                "id": "weave_mage_hat",
+                "name": "Weave Mage Hat",
+                "resultTemplateId": "mage_hat",
+                "requiredMaterials": [
+                    { "materialId": "magic_dust", "quantity": 3 },
+                    { "materialId": "iron_ore", "quantity": 2 }
+                ]
+            }
+        ]
+    },
     "enemies": {
         "scaling": {
             "statGrowthPerLevel": 0.15

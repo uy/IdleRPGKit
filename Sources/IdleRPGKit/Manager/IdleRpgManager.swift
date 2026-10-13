@@ -27,6 +27,7 @@ public class IdleRpgManager: ObservableObject {
     public var skillSystem: IdleRpgSkillSystem!
     public var adventureSystem: IdleRpgAdventureSystem!
     public var questSystem: IdleRpgQuestSystem!
+    public var craftingSystem: IdleRpgCraftingSystem!
 
     let idleProgressEventSubject = PassthroughSubject<IdleRpgIdleProgressEvent, Never>()
     public var idleProgressEventPublisher: AnyPublisher<IdleRpgIdleProgressEvent, Never> {
@@ -91,6 +92,10 @@ public class IdleRpgManager: ObservableObject {
         )
         questSystem = .init(
             quests: baseModel.quests
+        )
+        craftingSystem = .init(
+            materials: baseModel.craftingMaterials,
+            recipes: baseModel.craftingRecipes
         )
 
         gameProgress.character.$level
