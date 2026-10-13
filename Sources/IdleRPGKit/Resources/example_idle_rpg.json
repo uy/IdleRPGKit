@@ -205,6 +205,34 @@
             }
         ]
     },
+    "zones": {
+        "catalog": [
+            {
+                "id": "meadow",
+                "name": "Meadow",
+                "requiredLevel": 1,
+                "enemyIds": ["slime", "goblin"]
+            },
+            {
+                "id": "forest",
+                "name": "Forest",
+                "requiredLevel": 4,
+                "enemyIds": ["goblin", "wolf"]
+            },
+            {
+                "id": "mountain_pass",
+                "name": "Mountain Pass",
+                "requiredLevel": 7,
+                "enemyIds": ["wolf", "orc"]
+            },
+            {
+                "id": "dragons_lair",
+                "name": "Dragon's Lair",
+                "requiredLevel": 12,
+                "enemyIds": ["orc", "dragon"]
+            }
+        ]
+    },
     "enemies": {
         "scaling": {
             "statGrowthPerLevel": 0.15
