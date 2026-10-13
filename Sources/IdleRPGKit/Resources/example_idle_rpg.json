@@ -130,6 +130,28 @@
             }
         ]
     },
+    "adventures": {
+        "catalog": [
+            {
+                "id": "forest_patrol",
+                "name": "Forest Patrol",
+                "durationSeconds": 15,
+                "enemyId": "slime"
+            },
+            {
+                "id": "goblin_camp_raid",
+                "name": "Goblin Camp Raid",
+                "durationSeconds": 90,
+                "enemyId": "goblin"
+            },
+            {
+                "id": "hunt_the_dragon",
+                "name": "Hunt the Dragon",
+                "durationSeconds": 600,
+                "enemyId": "dragon"
+            }
+        ]
+    },
     "enemies": {
         "scaling": {
             "statGrowthPerLevel": 0.15
