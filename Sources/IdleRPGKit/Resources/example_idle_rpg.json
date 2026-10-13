@@ -152,6 +152,24 @@
             }
         ]
     },
+    "quests": {
+        "catalog": [
+            {
+                "id": "first_blood",
+                "name": "First Blood",
+                "objectiveKind": "winBattles",
+                "targetValue": 3,
+                "rewardXp": 50
+            },
+            {
+                "id": "rising_star",
+                "name": "Rising Star",
+                "objectiveKind": "reachLevel",
+                "targetValue": 10,
+                "rewardXp": 100
+            }
+        ]
+    },
     "enemies": {
         "scaling": {
             "statGrowthPerLevel": 0.15

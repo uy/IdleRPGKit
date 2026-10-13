@@ -21,9 +21,11 @@ public class IdleRPGCharacterProgressModel: ObservableObject, Codable {
     @Published public var lastSeenDate: Date
     @Published public var activeAdventureId: String?
     @Published public var adventureStartedAt: Date?
+    @Published public var totalBattlesWon: Int
+    @Published public var claimedQuestIds: [String]
 
     enum CodingKeys: CodingKey {
-        case race, clas, level, currentExperience, attributes, freeAttributePoints, ownedItems, equippedInstanceIds, lastSeenDate, activeAdventureId, adventureStartedAt
+        case race, clas, level, currentExperience, attributes, freeAttributePoints, ownedItems, equippedInstanceIds, lastSeenDate, activeAdventureId, adventureStartedAt, totalBattlesWon, claimedQuestIds
     }
 
     public init(
@@ -37,7 +39,9 @@ public class IdleRPGCharacterProgressModel: ObservableObject, Codable {
         equippedInstanceIds: [String: UUID] = [:],
         lastSeenDate: Date = Date(),
         activeAdventureId: String? = nil,
-        adventureStartedAt: Date? = nil
+        adventureStartedAt: Date? = nil,
+        totalBattlesWon: Int = 0,
+        claimedQuestIds: [String] = []
     ) {
         self.race = race
         self.clas = clas
@@ -49,6 +53,8 @@ public class IdleRPGCharacterProgressModel: ObservableObject, Codable {
         self.lastSeenDate = lastSeenDate
         self.activeAdventureId = activeAdventureId
         self.adventureStartedAt = adventureStartedAt
+        self.totalBattlesWon = totalBattlesWon
+        self.claimedQuestIds = claimedQuestIds
         self.attributes = attributes.map { baseAttribute in
             if let startingBonusAttribute = clas.startingBonusAttributes.first(where: { $0.key == baseAttribute.key }) {
                 IdleRPGCharacterProgressAttributeModel(
@@ -77,6 +83,8 @@ public class IdleRPGCharacterProgressModel: ObservableObject, Codable {
         self.lastSeenDate = try container.decodeIfPresent(Date.self, forKey: .lastSeenDate) ?? Date()
         self.activeAdventureId = try container.decodeIfPresent(String.self, forKey: .activeAdventureId) ?? nil
         self.adventureStartedAt = try container.decodeIfPresent(Date.self, forKey: .adventureStartedAt) ?? nil
+        self.totalBattlesWon = try container.decodeIfPresent(Int.self, forKey: .totalBattlesWon) ?? 0
+        self.claimedQuestIds = try container.decodeIfPresent([String].self, forKey: .claimedQuestIds) ?? []
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -92,5 +100,7 @@ public class IdleRPGCharacterProgressModel: ObservableObject, Codable {
         try container.encode(lastSeenDate, forKey: .lastSeenDate)
         try container.encode(activeAdventureId, forKey: .activeAdventureId)
         try container.encode(adventureStartedAt, forKey: .adventureStartedAt)
+        try container.encode(totalBattlesWon, forKey: .totalBattlesWon)
+        try container.encode(claimedQuestIds, forKey: .claimedQuestIds)
     }
 }

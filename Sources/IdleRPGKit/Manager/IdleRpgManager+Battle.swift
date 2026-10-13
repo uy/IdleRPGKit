@@ -23,6 +23,7 @@ extension IdleRpgManager {
         }
 
         gainXp(enemyStats.rewardXp)
+        gameProgress.character.totalBattlesWon += 1
 
         var droppedItem: IdleRpgOwnedEquipmentItem?
         if let randomSlot = equipmentSystem.slots.randomElement(),
