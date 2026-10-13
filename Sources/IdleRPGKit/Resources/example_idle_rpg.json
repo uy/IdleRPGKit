@@ -120,6 +120,16 @@
     "battle": {
         "healthPerConstitutionPoint": 10
     },
+    "skills": {
+        "catalog": [
+            {
+                "id": "iron_skin",
+                "name": "Iron Skin",
+                "attributeKey": "constitution",
+                "bonusPerLevel": 0.3
+            }
+        ]
+    },
     "enemies": {
         "scaling": {
             "statGrowthPerLevel": 0.15
