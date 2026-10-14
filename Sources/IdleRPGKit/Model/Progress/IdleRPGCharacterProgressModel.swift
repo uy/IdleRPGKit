@@ -26,9 +26,11 @@ public class IdleRPGCharacterProgressModel: ObservableObject, Codable {
     @Published public var materialCounts: [String: Int]
     @Published public var currentZoneId: String?
     @Published public var activeCompanionId: String?
+    @Published public var factionReputation: [String: Int]
+    @Published public var joinedFactionId: String?
 
     enum CodingKeys: CodingKey {
-        case race, clas, level, currentExperience, attributes, freeAttributePoints, ownedItems, equippedInstanceIds, lastSeenDate, activeAdventureId, adventureStartedAt, totalBattlesWon, claimedQuestIds, materialCounts, currentZoneId, activeCompanionId
+        case race, clas, level, currentExperience, attributes, freeAttributePoints, ownedItems, equippedInstanceIds, lastSeenDate, activeAdventureId, adventureStartedAt, totalBattlesWon, claimedQuestIds, materialCounts, currentZoneId, activeCompanionId, factionReputation, joinedFactionId
     }
 
     public init(
@@ -47,7 +49,9 @@ public class IdleRPGCharacterProgressModel: ObservableObject, Codable {
         claimedQuestIds: [String] = [],
         materialCounts: [String: Int] = [:],
         currentZoneId: String? = nil,
-        activeCompanionId: String? = nil
+        activeCompanionId: String? = nil,
+        factionReputation: [String: Int] = [:],
+        joinedFactionId: String? = nil
     ) {
         self.race = race
         self.clas = clas
@@ -64,6 +68,8 @@ public class IdleRPGCharacterProgressModel: ObservableObject, Codable {
         self.materialCounts = materialCounts
         self.currentZoneId = currentZoneId
         self.activeCompanionId = activeCompanionId
+        self.factionReputation = factionReputation
+        self.joinedFactionId = joinedFactionId
         self.attributes = attributes.map { baseAttribute in
             if let startingBonusAttribute = clas.startingBonusAttributes.first(where: { $0.key == baseAttribute.key }) {
                 IdleRPGCharacterProgressAttributeModel(
@@ -97,6 +103,8 @@ public class IdleRPGCharacterProgressModel: ObservableObject, Codable {
         self.materialCounts = try container.decodeIfPresent([String: Int].self, forKey: .materialCounts) ?? [:]
         self.currentZoneId = try container.decodeIfPresent(String.self, forKey: .currentZoneId) ?? nil
         self.activeCompanionId = try container.decodeIfPresent(String.self, forKey: .activeCompanionId) ?? nil
+        self.factionReputation = try container.decodeIfPresent([String: Int].self, forKey: .factionReputation) ?? [:]
+        self.joinedFactionId = try container.decodeIfPresent(String.self, forKey: .joinedFactionId) ?? nil
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -117,5 +125,7 @@ public class IdleRPGCharacterProgressModel: ObservableObject, Codable {
         try container.encode(materialCounts, forKey: .materialCounts)
         try container.encode(currentZoneId, forKey: .currentZoneId)
         try container.encode(activeCompanionId, forKey: .activeCompanionId)
+        try container.encode(factionReputation, forKey: .factionReputation)
+        try container.encode(joinedFactionId, forKey: .joinedFactionId)
     }
 }

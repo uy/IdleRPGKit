@@ -252,6 +252,23 @@
             }
         ]
     },
+    "factions": {
+        "catalog": [
+            {
+                "id": "silver_order",
+                "name": "Silver Order",
+                "rivalFactionId": "shadow_covenant"
+            },
+            {
+                "id": "shadow_covenant",
+                "name": "Shadow Covenant",
+                "rivalFactionId": "silver_order"
+            }
+        ]
+    },
+    "factionConfig": {
+        "reputationPerContribution": 10
+    },
     "enemies": {
         "scaling": {
             "statGrowthPerLevel": 0.15
