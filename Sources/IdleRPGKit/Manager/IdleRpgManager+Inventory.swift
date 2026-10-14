@@ -24,6 +24,7 @@ extension IdleRpgManager {
         }
 
         gameProgress.character.ownedItems.remove(at: index)
+        saveProgress()
         return true
     }
 }

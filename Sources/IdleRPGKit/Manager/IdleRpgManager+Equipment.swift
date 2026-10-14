@@ -30,10 +30,12 @@ extension IdleRpgManager {
     public func equip(_ ownedItem: IdleRpgOwnedEquipmentItem) {
         guard let slotKey = template(for: ownedItem)?.slotKey else { return }
         gameProgress.character.equippedInstanceIds[slotKey] = ownedItem.instanceId
+        saveProgress()
     }
 
     public func unequip(slotKey: String) {
         gameProgress.character.equippedInstanceIds.removeValue(forKey: slotKey)
+        saveProgress()
     }
 
     @discardableResult
@@ -44,6 +46,7 @@ extension IdleRpgManager {
         else { return false }
 
         gameProgress.character.ownedItems.append(ownedItem)
+        saveProgress()
         return true
     }
 

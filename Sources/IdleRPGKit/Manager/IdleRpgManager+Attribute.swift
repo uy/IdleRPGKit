@@ -14,8 +14,9 @@ extension IdleRpgManager {
         }
         
         gameProgress.character.freeAttributePoints -= 1
+        saveProgress()
     }
-    
+
     public func removeAttribute(from key: String) {
         guard let index = givenAttributePoints.firstIndex(where: { $0.key == key }) else { return }
 
@@ -24,19 +25,20 @@ extension IdleRpgManager {
         } else {
             givenAttributePoints.remove(at: index)
         }
-        
+
         gameProgress.character.freeAttributePoints += 1
+        saveProgress()
     }
-    
+
     public func givenAttributePoint(for key: String) -> Int? {
         return givenAttributePoints.first(where: { $0.key == key })?.value
     }
-    
+
     public func discardGivenAttributePoints() {
         guard !givenAttributePoints.isEmpty else { return }
         gameProgress.character.freeAttributePoints += givenAttributePoints.reduce(0) { $0 + $1.value }
         givenAttributePoints.removeAll()
-        IdleRpgUserDefaults.setGivenAttributePoints(givenAttributePoints)
+        saveProgress()
     }
 
     public func saveGivenAttributePoints() {
@@ -47,6 +49,6 @@ extension IdleRpgManager {
             }
         }
         givenAttributePoints.removeAll()
-        IdleRpgUserDefaults.setGivenAttributePoints(givenAttributePoints)
+        saveProgress()
     }
 }
