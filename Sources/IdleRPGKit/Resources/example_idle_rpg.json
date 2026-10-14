@@ -269,6 +269,31 @@
     "factionConfig": {
         "reputationPerContribution": 10
     },
+    "achievements": {
+        "catalog": [
+            {
+                "id": "veteran_warrior",
+                "name": "Veteran Warrior",
+                "objectiveKind": "winBattles",
+                "targetValue": 10,
+                "rewardAttributePoints": 3
+            },
+            {
+                "id": "max_level_novice",
+                "name": "Max Level Novice",
+                "objectiveKind": "reachLevel",
+                "targetValue": 20,
+                "rewardAttributePoints": 5
+            },
+            {
+                "id": "master_crafter",
+                "name": "Master Crafter",
+                "objectiveKind": "craftItems",
+                "targetValue": 2,
+                "rewardAttributePoints": 2
+            }
+        ]
+    },
     "enemies": {
         "scaling": {
             "statGrowthPerLevel": 0.15

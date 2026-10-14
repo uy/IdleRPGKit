@@ -28,6 +28,7 @@ extension IdleRpgManager {
             gameProgress.character.materialCounts[requirement.materialId, default: 0] -= requirement.quantity
         }
         gameProgress.character.ownedItems.append(ownedItem)
+        gameProgress.character.totalItemsCrafted += 1
         saveProgress()
 
         return ownedItem
