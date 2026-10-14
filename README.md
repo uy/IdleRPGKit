@@ -4,6 +4,31 @@ A Swift package of JSON-driven idle-RPG game systems. Every system below is load
 
 All persisted player state lives on one `Codable` model (`IdleRPGCharacterProgressModel`, wrapped in `IdleRPGGameProgressModel`) and round-trips through `IdleRpgUserDefaults` as a single JSON blob, so every system below shares the same save/load path with no per-system persistence code.
 
+## 🩺 Balance Audit Tool
+
+`IdleRpgBalanceAuditSystem` is a read-only linter over a loaded `IdleRPGBaseModel` — useful whenever `example_idle_rpg.json` gets reskinned for a new theme (see `docs/json-fill-prompt.md`) and you want to catch authoring mistakes before shipping. It is **not** wired into `IdleRpgManager` or the app's launch path — construct it and call `audit()` on demand (a `RunCodeSnippet` pass, a `#if DEBUG` button, a CLI — your call):
+
+```swift
+let model = IdleRpgLoader.loadExampleGameData()!
+let warnings = IdleRpgBalanceAuditSystem(model: model).audit()
+for warning in warnings {
+    print(warning.severity, warning.system, warning.message)
+}
+```
+
+It reuses the real systems' own formulas rather than a parallel hand-rolled score (a single unified cross-system "power score" was considered and rejected as too arbitrary once companion/skill/prestige/equipment bonuses stack), and checks nine things:
+1. Leveling's XP curve is non-decreasing across levels.
+2. Enemies' stats (`baseHealth`/`baseAttackDamage`/`baseDefense`/`rewardXp`) don't regress at a higher level.
+3. Equipment rarity multipliers increase common → legendary.
+4. Companions' total passive bonus doesn't regress at a later unlock level.
+5. Quest/Achievement rewards don't regress for a harder target within the same objective kind.
+6. Crafting recipes aren't absurdly cheap for a high-rarity result or absurdly expensive for a low-rarity one.
+7. Every cross-reference resolves (`adventures[].enemyId`, `zones[].enemyIds`, `craftingRecipes[].resultTemplateId`/`materialId`, `factions[].rivalFactionId`, `equipment.equipments[].slotKey`).
+8. `prestigeConfig.requiredLevel` is at least as high as every other level-gate in the file (zones, companions, `reachLevel`-kind quests/achievements) — it's meant to be the end-game gate.
+9. A handful of scalar configs (`battle.healthPerConstitutionPoint`, `idleMechanics.xpPerSecond`/`maxOfflineSeconds`, `factionConfig.reputationPerContribution`, `prestigeConfig.bonusPerPrestige`) are non-zero.
+
+Running it against the bundled `example_idle_rpg.json` today correctly reports one real, pre-existing inconsistency: the achievement "Max Level Novice" requires level 20, but `prestigeConfig.requiredLevel` is only 15.
+
 ## 📋 Feature List
 
 <details>
