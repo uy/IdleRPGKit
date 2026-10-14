@@ -5,7 +5,7 @@
 
 extension IdleRpgManager {
     private func attributeValue(for key: String) -> Int {
-        (gameProgress.character.attributes.first(where: { $0.key == key })?.attribute ?? 0) + equipmentBonus(for: key) + skillBonus(for: key) + companionBonus(for: key)
+        (gameProgress.character.attributes.first(where: { $0.key == key })?.attribute ?? 0) + equipmentBonus(for: key) + skillBonus(for: key) + companionBonus(for: key) + prestigeBonus(for: key)
     }
 
     public func fight(_ enemy: IdleRpgEnemy) -> IdleRpgBattleResult {

@@ -30,9 +30,10 @@ public class IdleRPGCharacterProgressModel: ObservableObject, Codable {
     @Published public var joinedFactionId: String?
     @Published public var totalItemsCrafted: Int
     @Published public var claimedAchievementIds: [String]
+    @Published public var prestigeCount: Int
 
     enum CodingKeys: CodingKey {
-        case race, clas, level, currentExperience, attributes, freeAttributePoints, ownedItems, equippedInstanceIds, lastSeenDate, activeAdventureId, adventureStartedAt, totalBattlesWon, claimedQuestIds, materialCounts, currentZoneId, activeCompanionId, factionReputation, joinedFactionId, totalItemsCrafted, claimedAchievementIds
+        case race, clas, level, currentExperience, attributes, freeAttributePoints, ownedItems, equippedInstanceIds, lastSeenDate, activeAdventureId, adventureStartedAt, totalBattlesWon, claimedQuestIds, materialCounts, currentZoneId, activeCompanionId, factionReputation, joinedFactionId, totalItemsCrafted, claimedAchievementIds, prestigeCount
     }
 
     public init(
@@ -55,7 +56,8 @@ public class IdleRPGCharacterProgressModel: ObservableObject, Codable {
         factionReputation: [String: Int] = [:],
         joinedFactionId: String? = nil,
         totalItemsCrafted: Int = 0,
-        claimedAchievementIds: [String] = []
+        claimedAchievementIds: [String] = [],
+        prestigeCount: Int = 0
     ) {
         self.race = race
         self.clas = clas
@@ -76,6 +78,7 @@ public class IdleRPGCharacterProgressModel: ObservableObject, Codable {
         self.joinedFactionId = joinedFactionId
         self.totalItemsCrafted = totalItemsCrafted
         self.claimedAchievementIds = claimedAchievementIds
+        self.prestigeCount = prestigeCount
         self.attributes = attributes.map { baseAttribute in
             if let startingBonusAttribute = clas.startingBonusAttributes.first(where: { $0.key == baseAttribute.key }) {
                 IdleRPGCharacterProgressAttributeModel(
@@ -113,6 +116,7 @@ public class IdleRPGCharacterProgressModel: ObservableObject, Codable {
         self.joinedFactionId = try container.decodeIfPresent(String.self, forKey: .joinedFactionId) ?? nil
         self.totalItemsCrafted = try container.decodeIfPresent(Int.self, forKey: .totalItemsCrafted) ?? 0
         self.claimedAchievementIds = try container.decodeIfPresent([String].self, forKey: .claimedAchievementIds) ?? []
+        self.prestigeCount = try container.decodeIfPresent(Int.self, forKey: .prestigeCount) ?? 0
     }
 
     public func encode(to encoder: Encoder) throws {
@@ -137,5 +141,6 @@ public class IdleRPGCharacterProgressModel: ObservableObject, Codable {
         try container.encode(joinedFactionId, forKey: .joinedFactionId)
         try container.encode(totalItemsCrafted, forKey: .totalItemsCrafted)
         try container.encode(claimedAchievementIds, forKey: .claimedAchievementIds)
+        try container.encode(prestigeCount, forKey: .prestigeCount)
     }
 }

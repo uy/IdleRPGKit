@@ -25,4 +25,5 @@ public struct IdleRPGBaseModel: Codable {
     public let factions: IdleRpgFactionCatalog
     public let factionConfig: IdleRPGFactionConfigModel
     public let achievements: IdleRpgAchievementCatalog
+    public let prestigeConfig: IdleRPGPrestigeModel
 }

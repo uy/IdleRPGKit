@@ -294,6 +294,10 @@
             }
         ]
     },
+    "prestigeConfig": {
+        "requiredLevel": 15,
+        "bonusPerPrestige": 2
+    },
     "enemies": {
         "scaling": {
             "statGrowthPerLevel": 0.15

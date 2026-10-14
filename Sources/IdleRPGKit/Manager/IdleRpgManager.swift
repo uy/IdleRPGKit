@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 public class IdleRpgManager: ObservableObject {
-    private var baseModel: IdleRPGBaseModel
+    var baseModel: IdleRPGBaseModel
     
     private var cancellables = Set<AnyCancellable>()
     @Published public var gameProgress: IdleRPGGameProgressModel
@@ -32,6 +32,7 @@ public class IdleRpgManager: ObservableObject {
     public var companionSystem: IdleRpgCompanionSystem!
     public var factionSystem: IdleRpgFactionSystem!
     public var achievementSystem: IdleRpgAchievementSystem!
+    public var prestigeSystem: IdleRpgPrestigeSystem!
 
     let idleProgressEventSubject = PassthroughSubject<IdleRpgIdleProgressEvent, Never>()
     public var idleProgressEventPublisher: AnyPublisher<IdleRpgIdleProgressEvent, Never> {
@@ -113,6 +114,9 @@ public class IdleRpgManager: ObservableObject {
         )
         achievementSystem = .init(
             achievements: baseModel.achievements
+        )
+        prestigeSystem = .init(
+            prestige: baseModel.prestigeConfig
         )
 
         gameProgress.character.$level
